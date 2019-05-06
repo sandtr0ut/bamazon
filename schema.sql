@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS top_songsDB;
+DROP DATABASE IF EXISTS bamazonDB;
 CREATE database bamazonDB;
 
 USE bamazonDB;
@@ -11,3 +11,9 @@ price DECIMAL(8, 2) UNSIGNED default 0,
 stock_quantity INTEGER(10) UNSIGNED NULL default 0,
 PRIMARY KEY (item_id)
 );
+
+-- ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'myPassword'
+
+
+
+
