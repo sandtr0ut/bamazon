@@ -10,23 +10,99 @@ var connection = mysql.createConnection({
 });
 
 connection.connect(function(err) {
-  if (err) throw err;
-  takeOrder();
+  if (err) {
+      console.error("connection error: " + err.stack);
+  }
+  showTable();
 });
 
 // Display table listing all available products
-function takeOrder() {
-  console.log("\n Displaying all available items: \n");
-  connection.query("SELECT * FROM products", function(err, res) {
-    if (err) throw err;
-    console.table(res);
-    connection.end();
-  });
+function showTable() {
+    connection.query("SELECT * FROM products", function(err, res) {
+        if (err) throw err;
+        console.table(res);
+        
+        takeOrder(res);
+    });
+}
+
+// Prompt customer for id of item they wish to purchase
+function takeOrder(items) {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "choice",
+            message: "What would you would like to purchase? Please enter item id or Q to quit:",
+            validate: function(val) {
+                return !isNaN(val) || val.toLowerCase() === "q";
+            }
+        }
+    ]).then(function(val) {
+        exitApp(val.choice);
+        var choiceId = parseInt(val.choice);
+        var product = checkInventory(choiceId, items);
+        
+        if (product) {
+            orderQuant(product);
+        } else {
+            console.log("\nItem not found.");
+            showTable();
+        }
+    });
+}
+
+function exitApp(choice) {
+    if (choice.toLowerCase() === "q") {
+        console.log("Exiting...");
+        process.exit(0);
+    }
+}
+
+function checkInventory(choiceId, items) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].item_id === choiceId) {
+            return items[i];
+        }
+    }
+    return null;
+}
+
+function orderQuant(product) {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "quantity",
+            message: "How many would you like?  Please enter quantity:",
+            validate: function(val) {
+                return val > 0 || val.toLowerCase() === "q";
+            }
+        }
+    ]).then(function(val) {
+        exitApp(val.quantity);
+        var quantity = parseInt(val.quantity);
+        
+        if (quantity > product.stock_quantity) {
+            console.log("\nNot enough in stock.  Please try a smaller quantity.");
+            showTable();
+        } else {
+            purchaseItem(product, quantity);
+        }
+    });
+}
+
+function purchaseItem(product, quantity) {
+    connection.query(
+        "UPDATE products SET stock_quantity = stock_quantity - ? WHERE item_id = ?",
+        [quantity, product.item_id],
+        function(err, res) {
+            console.log("\nConfirmation:  You purchased " + quantity + " " + product. product_name);
+            showTable();
+        }
+    );
 }
 
 
 // inquirer.prompt([
-//   // Prompt customer for id of item they wish to purchase
 //   {
 //     type: "input",
 //     name: "itemID",
