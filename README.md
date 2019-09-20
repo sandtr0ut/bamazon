@@ -65,3 +65,16 @@ npm install
 > `Not enough in stock. Please try a smaller quantity.`
 
 ![display3](assets/images/display3.jpg)
+
+## Author
+
+👤 **Ford Crosby**
+
+- Website: [fordcrosby.com](fordcrosby.com)
+- LinkedIn: [@FordCrosby](https://www.linkedin.com/in/fordcrosby/)
+- Github: [@sandtr0ut](https://github.com/sandtr0ut)
+- Twitter: [@FordCrosby](https://twitter.com/FordCrosby)
+
+## Show your support
+
+Give a ⭐️ if this project helped or entertained you!
