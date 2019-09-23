@@ -66,7 +66,7 @@ npm install
 
 > `Not enough in stock. Please try a smaller quantity.`
 
-![display3](assets/images/display3.jpg)
+![display3](https://github.com/sandtr0ut/bamazon/blob/master/assets/images/display3.JPG)
 
 ## Author
 
