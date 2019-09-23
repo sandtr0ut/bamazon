@@ -60,7 +60,7 @@ npm install
 
 > `Confirmation: You purchased 4 G.Skill Ripjaws V Series 64GB (4x16GB) DDR$ SDRAM`
 
-![display2](assets/images/display2.jpg)
+![display2](https://github.com/sandtr0ut/bamazon/blob/master/assets/images/display2.JPG)
 
 #### Order Confirmation - Insufficient Stock
 
