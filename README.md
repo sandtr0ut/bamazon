@@ -47,7 +47,7 @@ npm install
 ## Demo Images
 
 <p>
-<img alt="initial display" src="assets/images/initialDisplay.jpg">
+<img alt="initial display" src="./assets/images/initialDisplay.jpg">
 </p>
 
 #### Prompts
