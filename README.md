@@ -22,7 +22,7 @@
 
 Bamazon is an ultra-simple, 100% back-end, storefront application. It is written in Node.js with the Inquirer npm package and accessed by command line interface. All product information is stored in a MySQL database.
 
-### 🏠 [Homepage](https://github.com/sandtr0ut/burger#readme)
+### 🏠 [Homepage](https://github.com/sandtr0ut/bamazon#readme)
 
 ## Install
 
